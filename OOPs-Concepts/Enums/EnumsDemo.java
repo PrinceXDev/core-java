@@ -21,7 +21,9 @@ public class EnumsDemo {
     // -----------------------------------------------------------------
     // 1. Basic enum: a fixed, type-safe list of values
     // -----------------------------------------------------------------
-    enum Day { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    }
 
     static void basicEnum() {
         System.out.println("--- basic enum ---");
@@ -29,7 +31,7 @@ public class EnumsDemo {
         System.out.println("today = " + today);
         System.out.println("ordinal (position, 0-based) = " + today.ordinal());
         System.out.println("all values = " + java.util.Arrays.toString(Day.values()));
-        // Day today = "WEDNESDAY";   // COMPILE ERROR: can't sneak in a raw String
+        // Day today = "WEDNESDAY"; // COMPILE ERROR: can't sneak in a raw String
     }
 
     // -----------------------------------------------------------------
@@ -56,8 +58,8 @@ public class EnumsDemo {
         EARTH(5.97e24, 6.37e6),
         JUPITER(1.90e27, 6.99e7);
 
-        final double mass;    // kg
-        final double radius;  // meters
+        final double mass; // kg
+        final double radius; // meters
 
         // Enum constructors are ALWAYS private/package-private - called only
         // internally, once per constant, when the enum class is first loaded.
@@ -84,16 +86,25 @@ public class EnumsDemo {
     // -----------------------------------------------------------------
     enum Operation {
         ADD {
-            @Override int apply(int a, int b) { return a + b; }
+            @Override
+            int apply(int a, int b) {
+                return a + b;
+            }
         },
         SUBTRACT {
-            @Override int apply(int a, int b) { return a - b; }
+            @Override
+            int apply(int a, int b) {
+                return a - b;
+            }
         },
         MULTIPLY {
-            @Override int apply(int a, int b) { return a * b; }
+            @Override
+            int apply(int a, int b) {
+                return a * b;
+            }
         };
 
-        abstract int apply(int a, int b);   // each constant above supplies its own body
+        abstract int apply(int a, int b); // each constant above supplies its own body
     }
 
     static void enumWithAbstractMethodPerConstant() {
